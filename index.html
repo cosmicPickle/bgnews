@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Честит 1-ви Април!!!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0e4d7;
+            overflow: hidden;
+            margin: 0;
+        }
+        .bounce {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2em;
+            color: #8a7f8d;
+            position: absolute;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8,0,1,1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0,0,0.2,1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="aprilFools" class="bounce">Честит 1-ви Април!!!</div>
+    <script>
+        const aprilFoolsText = document.getElementById('aprilFools');
+        let bounceAnimation;
+
+        function animateBounce() {
+            const maxX = window.innerWidth - aprilFoolsText.clientWidth;
+            const maxY = window.innerHeight - aprilFoolsText.clientHeight;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+
+            aprilFoolsText.style.left = newX + 'px';
+            aprilFoolsText.style.top = newY + 'px';
+
+            aprilFoolsText.style.animation = 'none';
+            setTimeout(() => {
+                aprilFoolsText.style.animation = 'bounce 1s infinite';
+            }, 10); // small delay to reset animation
+        }
+
+        animateBounce();
+        setInterval(animateBounce, 2000);
+    </script>
+</body>
+</html>
